@@ -1,5 +1,4 @@
 import allure
-from locators.login_page_locators import LoginPageLocators
 from pages.base_page import BasePage
 from locators.dashboard_page_locators import DashPageLocators
 
@@ -21,6 +20,3 @@ class DashPage(BasePage):
     def wait_for_dash(self):
         self.wait_thing(DashPageLocators.logout_button)
 
-    @allure.step("Подожди прогрузки страницы логина")
-    def wait_for_logout(self):
-        self.wait_thing(LoginPageLocators.auth_button)

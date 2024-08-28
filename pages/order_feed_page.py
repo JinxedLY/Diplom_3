@@ -2,7 +2,6 @@ import allure
 from locators.order_feed_locators import OrderFeedLocators
 from pages.base_page import BasePage
 from stuff.pathways import Pathways
-from locators.dashboard_page_locators import DashPageLocators
 
 
 class OrderPage(BasePage):

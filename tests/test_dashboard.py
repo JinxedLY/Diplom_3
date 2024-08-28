@@ -1,5 +1,6 @@
 import allure
 
+from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.dash_page import DashPage
 from stuff.pathways import Pathways
@@ -27,7 +28,8 @@ class TestDashboard:
     def test_logout_success(self, driver, create_user, login_user):
         main_page = MainPage(driver)
         dash_page = DashPage(driver)
+        login_page = LoginPage(driver)
         main_page.click_dash()
         dash_page.click_logout()
-        dash_page.wait_for_logout()
+        login_page.wait_for_logout()
         assert driver.current_url == Pathways.LOGIN_PATH

@@ -38,3 +38,6 @@ class LoginPage(BasePage):
     def check_field_active(self):
         return self.wait_thing(LoginPageLocators.field_active)
 
+    @allure.step("Подожди прогрузки страницы логина")
+    def wait_for_logout(self):
+        self.wait_thing(LoginPageLocators.auth_button)
