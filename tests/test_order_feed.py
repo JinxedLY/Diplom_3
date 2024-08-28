@@ -1,4 +1,3 @@
-import time
 import allure
 from stuff.helpers import OrderMake
 from pages.order_feed_page import OrderPage

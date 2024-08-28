@@ -41,3 +41,7 @@ class LoginPage(BasePage):
     @allure.step("Подожди прогрузки страницы логина")
     def wait_for_logout(self):
         self.wait_thing(LoginPageLocators.auth_button)
+
+    @allure.step("Ждем появления поля с мылом")
+    def wait_for_email_field(self):
+        self.wait_thing(LoginPageLocators.code_from_email_input_field)

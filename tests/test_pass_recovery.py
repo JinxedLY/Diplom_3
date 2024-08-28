@@ -1,5 +1,4 @@
 import allure
-from locators.login_page_locators import LoginPageLocators
 from stuff.pathways import Pathways
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
@@ -25,7 +24,7 @@ class TestPassRecovery:
         email = create_user[0]['email']
         login_page.pass_email(email)
         login_page.click_recovery()
-        login_page.wait_thing(LoginPageLocators.code_from_email_input_field)
+        login_page.wait_for_email_field()
         assert main_page.check_pathway() == Pathways.RESET_PASSWORD
 
     @allure.title("Проверка подсветки поля при нажатии на кнопку показа пароля")
