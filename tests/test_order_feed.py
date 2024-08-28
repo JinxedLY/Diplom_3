@@ -1,7 +1,5 @@
 import time
 import allure
-import pytest
-from selenium.common import StaleElementReferenceException
 from stuff.helpers import OrderMake
 from pages.order_feed_page import OrderPage
 
@@ -50,15 +48,5 @@ class TestOrderFeed:
         order_page.refresh_page()
         OrderMake.order_create(create_user)
         created_order_number = "0" + str(OrderMake.order_create(create_user))
-        found = False # Это чудо хаотично обновляет поле, надо ловить
-        start_time = time.time() # Засекаем текущее время
-        while time.time() - start_time < 15: # Творим эту дичь не более 15 секунд
-            try:
-                orders_in_progress = order_page.get_in_progress_id() # Пытаемся поймать айдишник в локаторе
-                if created_order_number in orders_in_progress: # Допустим нашелся
-                    found = True # Меняем флаг, радуемся
-                    break # Выходим из лупа
-            except StaleElementReferenceException: #Тк обновление динамическое, локатор протухает
-                continue # Но мы радостно это игнорируем
-            time.sleep(1)
+        found = order_page.wait_for_order_in_progress(created_order_number)
         assert found

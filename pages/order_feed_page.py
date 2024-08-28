@@ -2,6 +2,8 @@ import allure
 from locators.order_feed_locators import OrderFeedLocators
 from pages.base_page import BasePage
 from stuff.pathways import Pathways
+import time
+from selenium.common import StaleElementReferenceException
 
 
 class OrderPage(BasePage):
@@ -35,4 +37,15 @@ class OrderPage(BasePage):
     def fetch_first_id(self):
         order_id = self.wait_thing(OrderFeedLocators.first_order_id).text
         return order_id
+
+    def wait_for_order_in_progress(self, created_order_number, timeout=15):
+        start_time = time.time()
+        while time.time() - start_time < timeout:
+            try:
+                orders_in_progress = self.get_in_progress_id()
+                if created_order_number in orders_in_progress:
+                    return True
+            except StaleElementReferenceException:
+                continue
+        return False
 
