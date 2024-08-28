@@ -34,3 +34,4 @@ class MainPage(BasePage):
 
     def check_order(self):
         return self.wait_thing(MainPageLocators.order_modal)
+

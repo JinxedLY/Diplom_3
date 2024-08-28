@@ -11,14 +11,14 @@ class TestBaseFunctionality:
         main_page.go_to_site()
         main_page.click_dash()
         main_page.click_constructor()
-        assert driver.current_url == Pathways.BASE_PATH + "/"
+        assert main_page.check_pathway() == Pathways.BASE_PATH + "/"
 
     @allure.title("Проверка перехода на Ленту заказов")
     def test_open_order_feed_success(self, driver):
         main_page = MainPage(driver)
         main_page.go_to_site()
         main_page.click_order_feed()
-        assert driver.current_url == Pathways.ORDER_FEED
+        assert main_page.check_pathway() == Pathways.ORDER_FEED
 
     @allure.title("Проверка открытия модалки с деталями по индигриенту")
     def test_ingredient_modal_success(self, driver):

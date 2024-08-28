@@ -14,7 +14,7 @@ class TestDashboard:
         dash_page = DashPage(driver)
         main_page.click_dash()
         dash_page.wait_for_dash()
-        assert driver.current_url == Pathways.ACCOUNT_PROFILE
+        assert main_page.check_pathway() == Pathways.ACCOUNT_PROFILE
 
     @allure.title("Проверка перехода в историю заказов")
     def test_redirect_to_order_history_success(self, driver, create_user, login_user):
@@ -22,7 +22,7 @@ class TestDashboard:
         dash_page = DashPage(driver)
         main_page.click_dash()
         dash_page.click_order_history()
-        assert driver.current_url == Pathways.ORDER_HISTORY
+        assert main_page.check_pathway() == Pathways.ORDER_HISTORY
 
     @allure.title("Проверка выхода из аккаунта")
     def test_logout_success(self, driver, create_user, login_user):
@@ -32,4 +32,4 @@ class TestDashboard:
         main_page.click_dash()
         dash_page.click_logout()
         login_page.wait_for_logout()
-        assert driver.current_url == Pathways.LOGIN_PATH
+        assert main_page.check_pathway() == Pathways.LOGIN_PATH

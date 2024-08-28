@@ -47,3 +47,7 @@ class BasePage:
     @allure.step("Обновить страницу")
     def refresh_page(self):
         self.driver.refresh()
+
+    @allure.step("На какой мы сейчас странице?")
+    def check_pathway(self):
+        return self.driver.current_url()

@@ -13,7 +13,7 @@ class TestPassRecovery:
         main_page.go_to_site()
         main_page.click_dash()
         login_page.click_to_recovery()
-        assert driver.current_url == Pathways.FORGOT_PASSWORD
+        assert main_page.check_pathway() == Pathways.FORGOT_PASSWORD
 
     @allure.title("Проверка перехода на страницу восстановления пароля при прохождении страницу забытого пароля")
     def test_redirect_to_recovery_pass_page_success(self, driver, create_user):
@@ -26,7 +26,7 @@ class TestPassRecovery:
         login_page.pass_email(email)
         login_page.click_recovery()
         login_page.wait_thing(LoginPageLocators.code_from_email_input_field)
-        assert driver.current_url == Pathways.RESET_PASSWORD
+        assert main_page.check_pathway() == Pathways.RESET_PASSWORD
 
     @allure.title("Проверка подсветки поля при нажатии на кнопку показа пароля")
     def test_password_field_highlight_success(self, driver):
