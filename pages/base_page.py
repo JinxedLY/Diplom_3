@@ -50,4 +50,4 @@ class BasePage:
 
     @allure.step("На какой мы сейчас странице?")
     def check_pathway(self):
-        return self.driver.current_url()
+        return self.driver.current_url
