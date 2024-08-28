@@ -1,9 +1,8 @@
 import pytest
 from selenium import webdriver
-from pages.base_page import BasePage
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
-from stuff.test_data import RealHumans
+from stuff.helpers import RealHumans
 import requests
 from stuff.pathways import Pathways
 from stuff.test_data import Ingredients
